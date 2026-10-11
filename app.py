@@ -5,7 +5,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# Allow requests from any origin
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -28,6 +27,6 @@ def get_students(class_: list[str] = Query(default=[], alias="class")):
             if student["class"] in class_
         ]
 
-    return students
+    return {"students": students}
 
 
